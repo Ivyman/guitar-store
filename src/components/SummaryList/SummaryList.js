@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ThumbnailBox from '../ThumbnailBox';
 import AmountControl from '../AmountControl';
 import NoData from '../NoData';
@@ -101,5 +102,28 @@ const SummaryList = ({
             ))}
     </div>
 );
+
+SummaryList.defaultName = 'SummaryList';
+SummaryList.propTypes = {
+    onAddToCart: PropTypes.func.isRequired,
+    onRemoveFromCart: PropTypes.func.isRequired,
+    onRemoveAllItemsFromCart: PropTypes.func.isRequired,
+    cartItems: PropTypes.shape({
+        amount: PropTypes.number,
+        orders: PropTypes.array,
+        totalPrice: PropTypes.number
+    }),
+    small: PropTypes.bool,
+    rwd: PropTypes.bool
+};
+SummaryList.defaultProps = {
+    cartItems: {
+        amount: 0,
+        orders: [],
+        totalPrice: 0
+    },
+    rwd: false,
+    small: false
+};
 
 export default SummaryList;
