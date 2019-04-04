@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { categoriesSelector } from '../../redux/settings/selectors';
 import { setFilters, clearFilters } from '../../redux/filters/actions';
@@ -25,6 +26,17 @@ class Home extends React.Component {
         );
     }
 }
+
+Home.defaultName = 'Home';
+Home.propTypes = {
+    setFilters: PropTypes.func.isRequired,
+    clearFilters: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    categories: PropTypes.array
+};
+Home.defaultProps = {
+    categories: []
+};
 
 const mapStateToProps = store => ({
     categories: categoriesSelector(store)

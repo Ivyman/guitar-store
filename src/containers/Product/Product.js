@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { route } from '../../utils/config';
 import ProductDescription from '../../components/ProductDescription';
@@ -33,6 +34,14 @@ class Product extends React.Component {
         );
     }
 }
+
+Product.defaultName = 'Product';
+Product.propTypes = {
+    addItemToCart: PropTypes.func.isRequired,
+    removeItemFromCart: PropTypes.func.isRequired,
+    productById: PropTypes.func.isRequired,
+    cartItemAmount: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
     addItemToCart: product => dispatch(addItemToCart(product)),

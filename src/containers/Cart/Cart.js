@@ -52,7 +52,12 @@ Cart.propTypes = {
         amount: PropTypes.number,
         orders: PropTypes.array,
         totalPrice: PropTypes.number
-    }).isRequired
+    })
+};
+Cart.defaultProps = {
+    amount: 0,
+    orders: [],
+    totalPrice: 0
 };
 
 const mapDispatchToProps = dispatch => ({

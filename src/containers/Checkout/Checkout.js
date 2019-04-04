@@ -77,6 +77,11 @@ Checkout.propTypes = {
     }).isRequired,
     history: PropTypes.object.isRequired
 };
+Checkout.defaultProps = {
+    amount: 0,
+    orders: [],
+    totalPrice: 0
+};
 
 const mapDispatchToProps = dispatch => ({
     setSummaryData: summaryData => dispatch(setSummaryData(summaryData))

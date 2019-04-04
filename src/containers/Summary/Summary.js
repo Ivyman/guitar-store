@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { cartItemsSelector } from '../../redux/cart/selectors';
 import { summaryDataSelector } from '../../redux/summary/selectors';
@@ -27,6 +28,34 @@ class Summary extends React.PureComponent {
         );
     }
 }
+
+Summary.defaultName = 'Summary';
+Summary.propTypes = {
+    cartItems: PropTypes.shape({
+        amount: PropTypes.number,
+        orders: PropTypes.array,
+        totalPrice: PropTypes.number
+    }),
+    summaryData: PropTypes.object
+};
+Summary.defaultProps = {
+    cartItems: {
+        amount: 0,
+        orders: [],
+        totalPrice: 0
+    },
+    summaryData: {
+        address: '',
+        city: '',
+        country: '',
+        delivery: '',
+        email: '',
+        name: '',
+        payment: '',
+        phone: 0,
+        postcode: 0
+    }
+};
 
 const mapStateToProps = store => ({
     cartItems: cartItemsSelector(store),
