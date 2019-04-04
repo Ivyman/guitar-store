@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { route } from '../../utils/config';
 import { connect } from 'react-redux';
 import { cartItemsSelector } from '../../redux/cart/selectors';
@@ -41,6 +42,18 @@ class Cart extends React.Component {
         );
     }
 }
+
+Cart.displayName = 'Cart';
+Cart.propTypes = {
+    addItemToCart: PropTypes.func.isRequired,
+    removeItemFromCart: PropTypes.func.isRequired,
+    removeAllItemsFromCart: PropTypes.func.isRequired,
+    cartItems: PropTypes.shape({
+        amount: PropTypes.number,
+        orders: PropTypes.array,
+        totalPrice: PropTypes.number
+    }).isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
     addItemToCart: product => dispatch(addItemToCart(product)),

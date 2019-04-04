@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { productsSelector } from '../../redux/products/selectors';
 import {
@@ -119,6 +120,36 @@ class Catalog extends React.Component {
         );
     }
 }
+
+Catalog.defaultName = 'Catalog';
+Catalog.propTypes = {
+    clearFilters: PropTypes.func.isRequired,
+    setFilters: PropTypes.func.isRequired,
+    addItemToCart: PropTypes.func.isRequired,
+    removeItemFromCart: PropTypes.func.isRequired,
+    filters: PropTypes.shape({
+        brand: PropTypes.array,
+        category: PropTypes.array,
+        pickup: PropTypes.array,
+        priceFrom: PropTypes.number,
+        priceTo: PropTypes.number,
+        query: PropTypes.string,
+        tremolo: PropTypes.array
+    }).isRequired,
+    cartItemAmount: PropTypes.func.isRequired,
+    products: PropTypes.array,
+    categories: PropTypes.array,
+    brands: PropTypes.array,
+    pickups: PropTypes.array,
+    tremolos: PropTypes.array
+};
+Catalog.defaultProps = {
+    products: [],
+    categories: [],
+    brands: [],
+    pickups: [],
+    tremolos: []
+};
 
 const mapDispatchToProps = dispatch => ({
     clearFilters: () => dispatch(clearFilters()),

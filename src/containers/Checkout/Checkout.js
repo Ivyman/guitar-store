@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { cartItemsSelector } from '../../redux/cart/selectors';
 import { route } from '../../utils/config';
@@ -65,6 +66,17 @@ class Checkout extends React.Component {
         );
     }
 }
+
+Checkout.defaultName = 'Checkout';
+Checkout.propTypes = {
+    setSummaryData: PropTypes.func.isRequired,
+    cartItems: PropTypes.shape({
+        amount: PropTypes.number,
+        orders: PropTypes.array,
+        totalPrice: PropTypes.number
+    }).isRequired,
+    history: PropTypes.object.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
     setSummaryData: summaryData => dispatch(setSummaryData(summaryData))
