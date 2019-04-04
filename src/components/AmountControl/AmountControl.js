@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.sass';
 
 const AmountControl = ({ amount, small, onAddToCart, onRemoveFromCart, list }) => (
@@ -24,5 +25,19 @@ const AmountControl = ({ amount, small, onAddToCart, onRemoveFromCart, list }) =
         )}
     </div>
 );
+
+AmountControl.defaultName = 'AmountControl';
+AmountControl.propTypes = {
+    onAddToCart: PropTypes.func.isRequired,
+    onRemoveFromCart: PropTypes.func.isRequired,
+    amount: PropTypes.number,
+    small: PropTypes.bool,
+    list: PropTypes.bool
+};
+AmountControl.defaultProps = {
+    amount: 0,
+    small: false,
+    list: false
+};
 
 export default AmountControl;

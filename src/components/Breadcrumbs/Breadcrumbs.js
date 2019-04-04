@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { route } from '../../utils/config';
 import './styles.sass';
@@ -25,5 +26,10 @@ const Breadcrumbs = ({ crumbs }) => (
         )}
     </ul>
 );
+
+Breadcrumbs.defaultName = 'Breadcrumbs';
+Breadcrumbs.propTypes = {
+    crumbs: PropTypes.array.isRequired
+};
 
 export default Breadcrumbs;
