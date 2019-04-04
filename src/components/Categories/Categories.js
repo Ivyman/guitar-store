@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NoData from '../NoData';
 import CategoryBox from '../CategoryBox';
 import './styles.sass';
@@ -20,5 +21,14 @@ const Categories = ({ categories, onChoseCategory }) => (
         )}
     </div>
 );
+
+Categories.defaultName = 'Categories';
+Categories.propTypes = {
+    onChoseCategory: PropTypes.func.isRequired,
+    categories: PropTypes.array
+};
+Categories.defaultProps = {
+    categories: []
+};
 
 export default Categories;
