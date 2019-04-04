@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { route } from '../../utils/config';
 import './styles.sass';
@@ -21,5 +22,23 @@ const ThumbnailBox = ({ thumb, name, category, productId, small, amount }) => (
         </div>
     </div>
 );
+
+ThumbnailBox.defaultName = 'ThumbnailBox';
+ThumbnailBox.propTypes = {
+    thumb: PropTypes.string,
+    name: PropTypes.string,
+    category: PropTypes.string,
+    productId: PropTypes.number,
+    small: PropTypes.bool,
+    amount: PropTypes.number
+};
+ThumbnailBox.defaultProps = {
+    thumb: '',
+    name: 'Thumbnail',
+    category: 'No category',
+    productId: 0,
+    small: false,
+    amount: 0
+};
 
 export default ThumbnailBox;
