@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Dropdown from '../Dropdown';
 import Select from '../Select';
 import { wordPluraliser, currencyFormat } from '../../utils/helper';
@@ -188,6 +189,43 @@ const FiltersForm = ({
             </div>
         </form>
     );
+};
+
+FiltersForm.defaultName = 'FiltersForm';
+FiltersForm.propTypes = {
+    onFiltersChange: PropTypes.func.isRequired,
+    filtersState: PropTypes.shape({
+        brand: PropTypes.array,
+        category: PropTypes.array,
+        pickup: PropTypes.array,
+        priceFrom: PropTypes.number,
+        priceTo: PropTypes.number,
+        query: PropTypes.string,
+        tremolo: PropTypes.array
+    }),
+    productsAmount: PropTypes.number,
+    categories: PropTypes.array,
+    brands: PropTypes.array,
+    tremolos: PropTypes.array,
+    pickups: PropTypes.array,
+    priceRange: PropTypes.array
+};
+FiltersForm.defaultProps = {
+    filtersState: {
+        brand: [],
+        category: [],
+        pickup: [],
+        priceFrom: 0,
+        priceTo: 0,
+        query: '',
+        tremolo: []
+    },
+    productsAmount: 0,
+    categories: [],
+    brands: [],
+    tremolos: [],
+    pickups: [],
+    priceRange: []
 };
 
 export default FiltersForm;

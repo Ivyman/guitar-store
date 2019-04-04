@@ -48,10 +48,11 @@ const clickOutsideConfig = {
 
 Dropdown.defaultName = 'Dropdown';
 Dropdown.propTypes = {
-    onSettingsChange: PropTypes.func.isRequired,
+    onSettingsChange: PropTypes.func,
     hasError: PropTypes.bool
 };
 Dropdown.defaultProps = {
+    onSettingsChange: null,
     hasError: false
 };
 
