@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import onClickOutside from 'react-onclickoutside';
 import './styles.sass';
 
+/**
+ * Define Dropdown component like a class component
+ * for catch instase on clickOutsideConfig function
+ */
 class Dropdown extends React.Component {
     state = { isOpen: false };
 
@@ -39,6 +44,15 @@ const clickOutsideConfig = {
     handleClickOutside: instance => {
         return instance.handleClickOutside;
     }
+};
+
+Dropdown.defaultName = 'Dropdown';
+Dropdown.propTypes = {
+    onSettingsChange: PropTypes.func.isRequired,
+    hasError: PropTypes.bool
+};
+Dropdown.defaultProps = {
+    hasError: false
 };
 
 export default onClickOutside(Dropdown, clickOutsideConfig);

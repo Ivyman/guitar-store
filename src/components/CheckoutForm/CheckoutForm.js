@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Select from '../../components/Select';
 import { deliveryServices, paymentMethods } from '../../utils/config';
 import './styles.sass';
@@ -131,6 +132,15 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
             </fieldset>
         </form>
     );
+};
+
+CheckoutForm.defaultName = 'CheckoutForm';
+CheckoutForm.propTypes = {
+    onSettingsChange: PropTypes.func.isRequired,
+    hasError: PropTypes.bool
+};
+CheckoutForm.defaultProps = {
+    hasError: false
 };
 
 export default CheckoutForm;
