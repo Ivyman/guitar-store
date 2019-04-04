@@ -1,0 +1,61 @@
+.amount-control
+    $root: &
+    display: flex
+    &__add, &__plus, &__minus
+        background: $main
+        font-size: 18px
+        border: none
+        cursor: pointer
+        border: 1px solid $main
+        color: $white
+        font-weight: 300
+        outline: none
+    &__add 
+        border-radius: 30px
+        padding: 10px 27px
+        height: 42px  
+    &__minus
+        line-height: 1
+        border:
+            bottom-left-radius: 30px
+            top-left-radius: 30px             
+    &__plus
+        line-height: 1
+        border:
+            bottom-right-radius: 30px
+            top-right-radius: 30px      
+    &__minus, &__plus
+        padding: 10px 20px
+        border: 1px solid $main  
+        height: 42px      
+        margin: 
+            right: 0
+            left: 0
+    &__number
+        padding: 10px 15px
+        border: 1px solid $main  
+        height: 42px 
+        display: flex
+        align-items: center
+        color: $white
+        background: $main
+    &--small
+        #{$root}
+            &__add
+                padding: 8px 18px
+                height: 32px  
+            &__add, &__plus, &__minus, &__number
+                font-size: 15px   
+                height: 32px    
+            &__minus, &__plus
+                padding: 8px 15px
+                line-height: 1
+            &__number
+                line-height: 1
+                padding: 10px 12px   
+
+    &--list
+        @include mobile()
+            #{$root}
+                &__add, &__plus, &__minus, &__number
+                    font-size: 16px                 

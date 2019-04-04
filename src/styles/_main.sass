@@ -1,0 +1,251 @@
+body
+    font-family: 'Open Sans', sans-serif
+    line-height: 1.5
+    color: $dark
+
+
+// Main
+.root
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+    .header + * 
+        flex-grow: 1
+
+.space-between
+    display: flex
+    justify-content: space-between
+
+    @include mobile()
+        flex-direction: column
+        align-items: center
+        & > *
+            margin-bottom: 30px
+            &:nth-child(2)
+                margin-bottom: 0
+
+.text-center
+    text-align: center
+
+.main-title
+    font-size: 60px
+    text-align: center
+    color: $white
+    margin: 20px 0
+
+    @include tablet()
+        font-size: 50px
+        line-height: 1.3
+
+.main-description
+    font-size: 17px
+    color: darken($white, 5%)
+    font-weight: 300
+    line-height: 1.7
+    margin: 20px 0 40px
+
+.main-subtitle
+    font-size: 30px
+    margin: 30px 0 40px 0
+
+    @include tablet()
+        margin: 20px 0 30px 0
+        font-size: 25px
+
+.max-width
+    max-width: 600px
+
+.text-center
+    align-items: center
+
+.margin-top
+    margin-top: 50px
+
+
+// Elements
+.close-button
+    display: inline-block
+    width: 30px
+    height: 30px
+    border-radius: 50px
+    cursor: pointer
+    outline: none
+    transition: .2s
+    border: 1px solid $red
+    background:
+        color: $red
+        size: 50%
+        position: center center
+        repeat: no-repeat
+        image: url("../#{$imagePath}close.svg")
+    &:hover
+        transform: scale(1.1)
+        box-shadow: $shadow
+    &:active
+        transform: scale(1)
+    &--small   
+        width: 25px
+        height: 25px 
+        
+.container 
+    max-width: 100%
+    width: $container-width
+    margin: 0 auto
+    padding: $container-padding $container-padding*1.5
+
+    @include tablet()
+        padding: 15px 20px
+
+.columns
+    $root: &
+    display: flex
+    & > *
+        &:nth-child(1)
+            width: 50%
+            border-right: 1px solid darken($gray-light, 10%)
+            margin-right: 30px
+            padding-right: 30px
+        &:nth-child(2)
+            width: 50%
+
+    @include tablet()
+        flex-direction: column-reverse
+        & > *
+            &:nth-child(1), &:nth-child(2)
+                width: 100%
+            &:nth-child(1)
+                border-right: none
+                margin-right: 0
+                padding-right: 0
+          
+
+.logo
+    $root: &
+    display: flex
+    align-items: center
+    &__image
+        margin-right: 15px
+        display: block
+        width: 50px
+        height: 60px
+        background:
+            size: 95% auto
+            repeat: no-repeat
+            image: url("../#{$imagePath}logo.svg")
+    &__text
+        height: 20px
+        width: 145px
+        background:
+            size: 95% auto
+            repeat: no-repeat
+            image: url("../#{$imagePath}logo-text.svg")
+    &--dark
+        filter: grayscale(1)
+        #{$root}__text
+            background-image: url("../#{$imagePath}logo-text-dark.svg")
+    &--small    
+        #{$root}__text
+            height: 15px
+            width: 110px
+        #{$root}__image
+            margin-right: 10px
+            width: 40px
+            height: 48px   
+    
+    @include mobile()
+        &__text
+            display: none  
+        &__image
+            width: 40px
+            height: 48px                      
+
+
+
+// Route animation
+.fade-enter 
+  opacity: 0
+  z-index: 1
+
+.fade-enter.fade-enter-active 
+  opacity: 1
+  transition: opacity 250ms ease-in
+
+.fade-exit 
+  display: none
+
+
+// Background
+.gradient
+    min-height: 100vh
+    background: $gradient
+    
+
+// Inputs
+.input
+    font-size: 17px
+    outline: none
+    height: 40px
+    box-sizing: border-box
+    line-height: 1.2
+    padding: 10px 20px
+    border: 1px solid darken($gray-light, 10%)
+    border-radius: $border-radius
+    background: $white
+    &--large
+        height: 50px
+        font-size: 20px
+        width: 400px
+        max-width: 100%
+        padding: 
+            right: 30px
+            left: 30px
+
+.radio-boxes
+    display: flex
+    align-items: center
+    justify-content: space-between
+    &__item
+        margin-right: 10px
+        input
+            display: none
+        label
+            line-height: 1.2
+            display: block
+            text-align: center
+            transition: border .3s, transform .3s
+            cursor: pointer
+            background: $white
+            border: 1px solid $white  
+            border-radius: $border-radius 
+            font-size: 14px
+            padding: 45px 20px 10px
+            border: 1px solid lighten($gray, 40%)
+            color: $dark
+            background:
+                repeat: no-repeat
+                size: 30px
+                position: center top 10px
+        input:checked + label
+            box-shadow: $shadow
+            border: 1px solid lighten($main, 10%)
+            color: darken($main, 10%)
+        &:last-of-type
+            margin-right: 0               
+        &--pp
+            label
+                background-image: url("../#{$imagePath}pay-pp.svg")
+        &--ae
+            label
+                background-image: url("../#{$imagePath}pay-ae.svg")
+        &--vs
+            label
+                background-image: url("../#{$imagePath}pay-vs.svg")
+        &--mc
+            label
+                background-image: url("../#{$imagePath}pay-mc.svg")
+
+    @include mobile()
+        &__item
+            margin-right: 5px
+            label
+                padding: 45px 10px 5px

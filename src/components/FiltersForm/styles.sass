@@ -1,0 +1,36 @@
+.filters
+    margin: 40px 0
+    &__amount
+        font-size: 20px
+        margin-left: 20px
+    &__bar
+        display: flex
+        align-items: center
+        margin-top: 20px
+        flex-wrap: wrap
+        & > *
+            margin:
+                right: 15px
+                bottom: 15px
+            
+    &__close
+        flex-grow: 1    
+        display: flex
+        align-items: center
+        justify-content: flex-end
+
+    @include tablet()
+        &__amount
+            margin:
+                left: 0    
+                bottom: 10px
+        &__searchbar    
+            display: flex
+            flex-direction: column-reverse
+            input 
+                width: 100%
+            
+            
+
+   
+        

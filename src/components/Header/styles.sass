@@ -1,0 +1,72 @@
+.header
+    background-image: $gradient
+    .container
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__navbar   
+        ul
+            display: flex
+            align-items: center 
+            
+    &__navbar-item                
+        margin-right: 35px
+        &--cart 
+            position: relative
+            transition: .3s
+            &:hover
+                transform: scale(1.2) rotate(-5deg)
+
+    &__navbar-link    
+        font-size: 20px
+        color: $white
+        line-height: 2
+        text-decoration: none  
+        padding-bottom: 10px
+        &::after
+            content: ''
+            width: 0
+            transition: .3s
+            display: block
+            height: 3px
+            background: $main
+        &:hover
+            &::after
+                width: 100%  
+        &--active
+            color: $main              
+
+    &__cart-amount
+        right: -12px
+        top: -12px
+        position: absolute
+        color: $white
+        background: $main
+        border-radius: 100px
+        min-width: 25px
+        height: 25px
+        padding: 5px
+        display: flex
+        justify-content: center
+        align-items: center
+
+    &__cart-icon
+        color: $white
+        display: block
+        width: 30px
+        height: 30px
+        background:
+            size: cover
+            repeat: no-repeat
+            image: url("../../#{$imagePath}cart.svg")
+
+    &--curve
+        background:
+            image: url("../../#{$imagePath}filter.png"), url("../../#{$imagePath}curve.svg"), $gradient
+            repeat: no-repeat, no-repeat, no-repeat
+            position: center, bottom center, center
+            size: cover, 100% 80px, auto
+
+    @include mobile()
+        &__navbar-item
+            margin-right: 20px        

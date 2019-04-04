@@ -1,0 +1,19 @@
+.throbber
+    display: flex
+    align-items: center
+    flex-direction: column
+    margin: 50px 0
+    &__message
+        font-size: 30px
+        margin-bottom: 20px
+    svg
+        width: 180px
+        height: 55px
+    &--appearance
+        animation: appearance .5s forwards
+
+@keyframes appearance 
+    0%
+        opacity: 0
+    100%
+        opacity: 1    

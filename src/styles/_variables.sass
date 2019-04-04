@@ -1,0 +1,40 @@
+$main: #e73b1b
+    
+$red: #e65757
+$gray: #7b7b7b
+$gray-light: #f5f5f5
+$white: #fff
+$purple: #280C4F
+$purple-light: #a91b78
+$blue: #0b49f6
+$dark: #343546
+
+$border-radius: 5px
+$gradient: linear-gradient(135deg, $purple 0%,$purple-light 67%,$blue 100%)
+$shadow: 0 0 30px rgba(0,0,0,.1)
+$shadow-large: 0 0 40px rgba(0,0,0,.2)
+
+$container-width: 1300px
+$container-padding: 20px
+
+$imagePath: "assets/images/"
+
+// Breackpoints
+$sm: 600px
+$md: 960px
+$lg: 1280px
+
+    
+// Mixins
+@mixin mobile()
+    @media (max-width: $sm)
+        @content
+        
+@mixin tablet()
+    @media (max-width: $md)
+        @content    
+
+@mixin desktop()
+    @media (max-width: $lg)
+        @content    
+    

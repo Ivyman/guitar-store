@@ -1,0 +1,2 @@
+export const SET_SUMMARY_DATA = 'SET_SUMMARY_DATA';
+export const CLEAR_SUMMARY = 'CLEAR_SUMMARY';

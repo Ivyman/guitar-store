@@ -1,0 +1,30 @@
+.breadcrumbs
+    $root: &
+    display: flex
+    color: $gray
+    margin: 20px 0
+    flex-wrap: wrap
+    &__item-link
+        margin-right: 10px
+        text-decoration: none
+        color: $gray
+        font-weight: 700
+        transition: color .3s
+        &:hover
+            color: $main
+    &__item
+        margin-right: 10px
+        &::after
+            content: '›'
+        &:last-of-type
+            color: $main
+            &::after
+                content: ''
+        &--home
+            #{$root}__item-link
+                padding-left: 25px
+                background: 
+                    image: url("../../#{$imagePath}home.svg")
+                    size: auto 85%
+                    repeat: no-repeat
+                    position: left center

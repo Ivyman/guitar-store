@@ -1,0 +1,28 @@
+.categories
+    $root: &
+
+    max-width: 1000px
+    margin:
+        right: auto
+        left: auto
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 
+    grid-column-gap: 40px
+    grid-row-gap: 40px
+    justify-items: center
+    padding: 20px 0
+    justify-items: stretch
+    &__item
+        text-decoration: none
+        display: flex
+
+    @include tablet()
+        max-width: 650px
+        grid-template-columns: 1fr 1fr    
+
+    @include mobile()
+        grid-column-gap: 20px
+        grid-row-gap: 20px   
+
+    &--no-data
+       grid-template-columns: 1fr
