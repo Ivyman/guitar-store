@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { route } from '../../utils/config';
 import './styles.sass';
 
-const Footer = ({ cartAmount }) => (
+const Footer = () => (
     <footer className="footer">
         <section className="container">
             <NavLink className="footer__logo" to={route.home.link}>

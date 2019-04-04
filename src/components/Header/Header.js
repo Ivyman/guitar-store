@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Jumbotron from '../../components/Jumbotron';
 import { route } from '../../utils/config';
@@ -51,5 +52,14 @@ const Header = ({ cartAmount, location }) => (
         {isHome(location) && <Jumbotron brandName={brandName} />}
     </header>
 );
+
+Header.defaultName = 'Header';
+Header.propTypes = {
+    location: PropTypes.object.isRequired,
+    cartAmount: PropTypes.number
+};
+Header.defaultProps = {
+    cartAmount: 0
+};
 
 export default Header;

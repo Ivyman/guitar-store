@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.sass';
 
 const LoadBar = ({ message, appearance }) => (
@@ -108,5 +109,15 @@ const LoadBar = ({ message, appearance }) => (
         </svg>
     </div>
 );
+
+LoadBar.defaultName = 'LoadBar';
+LoadBar.propTypes = {
+    message: PropTypes.string,
+    appearance: PropTypes.bool
+};
+LoadBar.defaultProps = {
+    message: 'Loading...',
+    appearance: false
+};
 
 export default LoadBar;

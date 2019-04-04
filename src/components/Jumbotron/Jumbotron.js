@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../components/Button';
 import { route } from '../../utils/config';
 import './styles.sass';
@@ -16,5 +17,13 @@ const Jumbotron = ({ brandName }) => (
         </div>
     </section>
 );
+
+Jumbotron.defaultName = 'Jumbotron';
+Jumbotron.propTypes = {
+    brandName: PropTypes.string
+};
+Jumbotron.defaultProps = {
+    brandName: 'Jumbotron'
+};
 
 export default Jumbotron;
