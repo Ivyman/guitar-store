@@ -44,17 +44,7 @@ Summary.defaultProps = {
         orders: [],
         totalPrice: 0
     },
-    summaryData: {
-        address: '',
-        city: '',
-        country: '',
-        delivery: '',
-        email: '',
-        name: '',
-        payment: '',
-        phone: 0,
-        postcode: 0
-    }
+    summaryData: {}
 };
 
 const mapStateToProps = store => ({

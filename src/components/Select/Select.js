@@ -13,7 +13,7 @@ const Select = ({ children, value, onChange, name, merge }) => (
 Select.defaultName = 'Select';
 Select.propTypes = {
     children: PropTypes.array.isRequired,
-    value: PropTypes.number.isRequired,
+    value: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string,
     merge: PropTypes.bool

@@ -105,9 +105,9 @@ const SummaryList = ({
 
 SummaryList.defaultName = 'SummaryList';
 SummaryList.propTypes = {
-    onAddToCart: PropTypes.func.isRequired,
-    onRemoveFromCart: PropTypes.func.isRequired,
-    onRemoveAllItemsFromCart: PropTypes.func.isRequired,
+    onAddToCart: PropTypes.func,
+    onRemoveFromCart: PropTypes.func,
+    onRemoveAllItemsFromCart: PropTypes.func,
     cartItems: PropTypes.shape({
         amount: PropTypes.number,
         orders: PropTypes.array,
@@ -117,6 +117,9 @@ SummaryList.propTypes = {
     rwd: PropTypes.bool
 };
 SummaryList.defaultProps = {
+    onAddToCart: null,
+    onRemoveFromCart: null,
+    onRemoveAllItemsFromCart: null,
     cartItems: {
         amount: 0,
         orders: [],

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 import { route, paymentMethods, deliveryServices } from '../../utils/config';
 import { currencyFormat } from '../../utils/helper';
@@ -85,5 +86,17 @@ const SummarySheet = ({ data: { cartItems, summaryData } }) => (
         </div>
     </div>
 );
+
+SummarySheet.defaultName = 'SummaryList';
+SummarySheet.propTypes = {
+    data: PropTypes.shape({
+        cartItems: PropTypes.shape({
+            amount: PropTypes.number,
+            orders: PropTypes.array,
+            totalPrice: PropTypes.number
+        }).isRequired,
+        summaryData: PropTypes.object.isRequired
+    })
+};
 
 export default SummarySheet;
