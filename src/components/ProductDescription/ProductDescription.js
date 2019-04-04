@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AmountControl from '../AmountControl';
 import Button from '../Button';
 import { currencyFormat } from '../../utils/helper';
@@ -88,5 +89,33 @@ const ProductDescription = ({
         </div>
     </div>
 );
+
+ProductDescription.defaultName = 'ProductDescription';
+ProductDescription.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    category: PropTypes.shape({
+        name: PropTypes.string
+    }).isRequired,
+    thumb: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    brand: PropTypes.shape({
+        image: PropTypes.string,
+        name: PropTypes.string
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+    pickup: PropTypes.shape({
+        image: PropTypes.string,
+        name: PropTypes.string
+    }).isRequired,
+    tremolo: PropTypes.shape({
+        image: PropTypes.string,
+        name: PropTypes.string
+    }).isRequired,
+    onAddToCart: PropTypes.func.isRequired,
+    onRemoveFromCart: PropTypes.func.isRequired,
+    cartItemAmount: PropTypes.func.isRequired
+};
 
 export default ProductDescription;

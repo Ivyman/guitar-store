@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProductListItem from '../ProductListItem';
 import NoData from '../../components/NoData';
 import './styles.sass';
@@ -27,4 +28,16 @@ const ProductList = ({ products, cartItemAmount, onAddToCart, onRemoveFromCart }
     ) : (
         <NoData message="No product found!" />
     );
+
+ProductList.defaultName = 'ProductList';
+ProductList.propTypes = {
+    cartItemAmount: PropTypes.func.isRequired,
+    onAddToCart: PropTypes.func.isRequired,
+    onRemoveFromCart: PropTypes.func.isRequired,
+    products: PropTypes.array
+};
+ProductList.defaultProps = {
+    products: []
+};
+
 export default ProductList;
