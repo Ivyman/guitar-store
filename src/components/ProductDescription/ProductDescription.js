@@ -84,7 +84,7 @@ const ProductDescription = ({
                 Continue shopping
             </Button>
             <Button main linkTo={route.cart.link}>
-                Continue shopping
+                Go to cart
             </Button>
         </div>
     </div>
