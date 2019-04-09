@@ -20,9 +20,9 @@ const FiltersForm = ({
 
     const filtersAreDirty = () => {
         let filterState = false;
-        let condForArrayFilters = filter =>
+        const condForArrayFilters = filter =>
             Array.isArray(filtersState[filter]) && !!filtersState[filter].length;
-        let condForFilters = filter =>
+        const condForFilters = filter =>
             !Array.isArray(filtersState[filter]) &&
             !!filtersState[filter] &&
             !(filter === 'priceTo' && filtersState[filter] === 2700);

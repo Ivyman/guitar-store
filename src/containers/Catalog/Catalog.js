@@ -23,10 +23,10 @@ class Catalog extends React.Component {
     setFilteredProducts = (filters, products) => {
         let filteredProducts = products;
 
-        for (let filterName in filters) {
+        for (const filterName in filters) {
             switch (filterName) {
                 case 'query':
-                    let query = filters[filterName].toLowerCase();
+                    const query = filters[filterName].toLowerCase();
 
                     filteredProducts = filteredProducts.filter(product =>
                         product.name.toLowerCase().includes(query)
@@ -34,7 +34,7 @@ class Catalog extends React.Component {
                     break;
 
                 case 'priceFrom':
-                    let priceFrom = filters[filterName] ? parseInt(filters[filterName], 10) : 0;
+                    const priceFrom = filters[filterName] ? parseInt(filters[filterName], 10) : 0;
 
                     filteredProducts = filteredProducts.filter(
                         product => parseInt(product.price, 10) >= priceFrom
@@ -42,7 +42,7 @@ class Catalog extends React.Component {
                     break;
 
                 case 'priceTo':
-                    let priceTo = filters[filterName]
+                    const priceTo = filters[filterName]
                         ? parseInt(filters[filterName], 10)
                         : getLastItem(this.priceRange);
 
@@ -52,7 +52,7 @@ class Catalog extends React.Component {
                     break;
 
                 default:
-                    let filterData = filters[filterName];
+                    const filterData = filters[filterName];
 
                     if (!!Array.isArray(filterData) && filterData.length) {
                         filteredProducts = filteredProducts.filter(product =>

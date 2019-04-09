@@ -29,8 +29,8 @@ class App extends React.PureComponent {
 
     componentDidUpdate() {
         // Hook for cleaning cart and sumary
-        let isSummaryPage = isSummary(this.props.location);
-        let { summaryWasVisited } = this.state;
+        const isSummaryPage = isSummary(this.props.location);
+        const { summaryWasVisited } = this.state;
         const { clearCart, clearSummary } = this.props;
 
         if (isSummaryPage) {
