@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { cartItemsSelector } from '../../redux/cart/selectors';
 import { route } from '../../utils/config';
 import { scrollTop } from '../../utils/helper';
-import { fromValidate } from '../../utils/helper';
+import { formValidate } from '../../utils/helper';
 import LoadBar from '../../components/LoadBar';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import CheckoutSettings from '../../components/CheckoutSettings';
@@ -13,31 +13,40 @@ import Button from '../../components/Button';
 import { setSummaryData } from '../../redux/summary/actions';
 
 class Checkout extends React.Component {
-    state = { settingsForm: {}, hasFormError: false, showThrobber: false };
+    state = { settingsForm: {}, fieldsWithError: [], hasFormError: false, showThrobber: false };
 
     handleSettingsChange = fields => {
-        this.setState({ settingsForm: { ...fields }, hasFormError: false });
+        this.setState({ settingsForm: { ...fields }, fieldsWithError: [], hasFormError: false });
     };
 
     handlePayClick = () => {
-        if (fromValidate(this.state.settingsForm)) {
-            let checkoutData = {};
-            this.setState({ showThrobber: true });
+        let checkoutData = {};
+        let fieldsWithError = [];
 
-            Object.entries(this.state.settingsForm).forEach(
-                item => (checkoutData[item[0]] = item[1].value)
-            );
+        Object.entries(this.state.settingsForm).forEach(item => {
+            fieldsWithError.push(!item[1].length && item[0]);
+            checkoutData[item[0]] = item[1];
+        });
+
+        if (formValidate(this.state.settingsForm)) {
+            this.setState({ showThrobber: true });
 
             this.props.setSummaryData(checkoutData);
             setTimeout(() => this.props.history.push(route.summary.link), 2000);
         } else {
-            this.setState({ hasFormError: true }, () => scrollTop(true));
+            this.setState(
+                {
+                    hasFormError: true,
+                    fieldsWithError: fieldsWithError
+                },
+                () => scrollTop(true)
+            );
         }
     };
 
     render() {
         const { cartItems } = this.props;
-        const { hasFormError, showThrobber } = this.state;
+        const { hasFormError, showThrobber, fieldsWithError } = this.state;
 
         return (
             <>
@@ -50,6 +59,7 @@ class Checkout extends React.Component {
                     <>
                         <div className="columns">
                             <CheckoutSettings
+                                fieldsWithError={fieldsWithError}
                                 hasFormError={hasFormError}
                                 onSettingsChange={this.handleSettingsChange}
                             />

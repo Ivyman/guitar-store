@@ -4,57 +4,21 @@ import Select from '../../components/Select';
 import { deliveryServices, paymentMethods } from '../../utils/config';
 import './styles.sass';
 
-const CheckoutForm = ({ onSettingsChange, hasError }) => {
+const CheckoutForm = ({ onSettingsChange, hasError, fieldsWithError }) => {
     const [checkoutForm, setCheckoutForm] = useState({
-        name: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        email: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        phone: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        payment: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        delivery: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        country: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        postcode: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        city: {
-            value: '',
-            error: null,
-            dirty: ''
-        },
-        address: {
-            value: '',
-            error: null,
-            dirty: ''
-        }
+        name: '',
+        email: '',
+        phone: '',
+        payment: '',
+        delivery: '',
+        country: '',
+        postcode: '',
+        city: '',
+        address: ''
     });
 
     const handleInputChange = (event, field) => {
-        setCheckoutForm({ ...checkoutForm, [field]: { value: event.target.value } });
+        setCheckoutForm({ ...checkoutForm, [field]: event.target.value });
     };
 
     useEffect(() => onSettingsChange(checkoutForm), [checkoutForm]);
@@ -67,34 +31,38 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
             <fieldset className="checkout-form__fieldset">
                 <legend className="checkout-form__legend">Contact information</legend>
                 <input
-                    className="input"
+                    className={`input ${fieldsWithError.includes('name') ? 'input--error' : ''}`}
                     name="name"
                     type="text"
                     placeholder="Name"
-                    value={checkoutForm.name.value}
+                    value={checkoutForm.name}
                     onChange={event => handleInputChange(event, 'name')}
                 />
                 <input
-                    className="input"
+                    className={`input ${fieldsWithError.includes('email') ? 'input--error' : ''}`}
                     name="email"
                     type="email"
                     placeholder="Email"
-                    value={checkoutForm.email.value}
+                    value={checkoutForm.email}
                     onChange={event => handleInputChange(event, 'email')}
                 />
                 <input
-                    className="input"
+                    className={`input ${fieldsWithError.includes('phone') ? 'input--error' : ''}`}
                     name="phone"
                     type="tel"
                     placeholder="Phone"
-                    value={checkoutForm.phone.value}
+                    value={checkoutForm.phone}
                     onChange={event => handleInputChange(event, 'phone')}
                 />
             </fieldset>
 
             <fieldset className="checkout-form__fieldset">
                 <legend className="checkout-form__legend">Payment method</legend>
-                <div className="radio-boxes">
+                <div
+                    className={`radio-boxes ${
+                        fieldsWithError.includes('payment') ? 'radio-boxes--error' : ''
+                    }`}
+                >
                     {paymentMethods.map(method => (
                         <span
                             key={method.value}
@@ -116,8 +84,9 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
             <fieldset className="checkout-form__fieldset">
                 <legend className="checkout-form__legend">Delivery option</legend>
                 <Select
+                    hasError={fieldsWithError.includes('delivery')}
                     name="delivery"
-                    value={checkoutForm.delivery.value}
+                    value={checkoutForm.delivery}
                     onChange={event => handleInputChange(event, 'delivery')}
                 >
                     <option value="" disabled>
@@ -135,34 +104,36 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                 <legend className="checkout-form__legend">Delivery address</legend>
                 <input
                     type="text"
-                    className="input"
+                    className={`input ${fieldsWithError.includes('country') ? 'input--error' : ''}`}
                     name="country"
                     placeholder="Country"
-                    value={checkoutForm.country.value}
+                    value={checkoutForm.country}
                     onChange={event => handleInputChange(event, 'country')}
                 />
                 <input
                     type="number"
-                    className="input"
+                    className={`input ${
+                        fieldsWithError.includes('postcode') ? 'input--error' : ''
+                    }`}
                     name="postcode"
                     placeholder="Postcode"
-                    value={checkoutForm.postcode.value}
+                    value={checkoutForm.postcode}
                     onChange={event => handleInputChange(event, 'postcode')}
                 />
                 <input
                     type="text"
-                    className="input"
+                    className={`input ${fieldsWithError.includes('city') ? 'input--error' : ''}`}
                     name="city"
                     placeholder="City"
-                    value={checkoutForm.city.value}
+                    value={checkoutForm.city}
                     onChange={event => handleInputChange(event, 'city')}
                 />
                 <input
-                    className="input"
+                    className={`input ${fieldsWithError.includes('address') ? 'input--error' : ''}`}
                     name="address"
                     type="text"
                     placeholder="Address"
-                    value={checkoutForm.address.value}
+                    value={checkoutForm.address}
                     onChange={event => handleInputChange(event, 'address')}
                 />
             </fieldset>
@@ -173,10 +144,12 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
 CheckoutForm.defaultName = 'CheckoutForm';
 CheckoutForm.propTypes = {
     onSettingsChange: PropTypes.func.isRequired,
-    hasError: PropTypes.bool
+    hasError: PropTypes.bool,
+    fieldsWithError: PropTypes.array
 };
 CheckoutForm.defaultProps = {
-    hasError: false
+    hasError: false,
+    fieldsWithError: []
 };
 
 export default CheckoutForm;

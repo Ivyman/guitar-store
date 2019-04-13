@@ -199,8 +199,13 @@ body
         padding: 
             right: 30px
             left: 30px
+    &--error
+        border-color: $red
+        background: lighten($red, 30%)        
 
 .radio-boxes
+    $root: &
+
     display: flex
     align-items: center
     justify-content: space-between
@@ -227,8 +232,9 @@ body
                 position: center top 10px
         input:checked + label
             box-shadow: $shadow
-            border: 1px solid lighten($main, 10%)
-            color: darken($main, 10%)
+            border: 1px solid lighten($green, 10%)
+            color: darken($green, 10%)
+            background-color: lighten($green, 65%) 
         &:last-of-type
             margin-right: 0               
         &--pp
@@ -243,6 +249,11 @@ body
         &--mc
             label
                 background-image: url("../#{$imagePath}pay-mc.svg")
+    &--error
+        #{$root}__item
+            label
+                border-color: $red
+                background-color: lighten($red, 30%)   
 
     @include mobile()
         &__item
