@@ -1,15 +1,15 @@
 import * as types from './types';
 
 const initialState = {
-    name: 'name',
-    email: 'email',
-    phone: 'phone',
-    payment: 'payment',
-    delivery: 'delivery',
-    country: 'country',
-    postcode: '123123',
-    city: 'city',
-    address: 'address'
+    name: '',
+    email: '',
+    phone: '',
+    payment: '',
+    delivery: '',
+    country: '',
+    postcode: '',
+    city: '',
+    address: ''
 };
 
 const reducer = (state = initialState, action) => {

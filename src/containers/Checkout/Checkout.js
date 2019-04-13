@@ -21,9 +21,14 @@ class Checkout extends React.Component {
 
     handlePayClick = () => {
         if (fromValidate(this.state.settingsForm)) {
+            let checkoutData = {};
             this.setState({ showThrobber: true });
 
-            this.props.setSummaryData(this.state.settingsForm);
+            Object.entries(this.state.settingsForm).forEach(
+                item => (checkoutData[item[0]] = item[1].value)
+            );
+
+            this.props.setSummaryData(checkoutData);
             setTimeout(() => this.props.history.push(route.summary.link), 2000);
         } else {
             this.setState({ hasFormError: true }, () => scrollTop(true));

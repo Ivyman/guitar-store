@@ -21,8 +21,8 @@ export const currencyFormat = price => {
 
 export const wordPluraliser = (word, amount) => `${word}${amount > 1 ? 's' : ''}`;
 
-export const fromValidate = from =>
-    Object.values(from).find(field => field.length === 0) === undefined;
+export const fromValidate = form =>
+    Object.values(form).find(field => field.value.length === 0) === undefined;
 
 export const arrayRange = (length, step) =>
     Array.from({ length: length }, (x, index) => index * step);

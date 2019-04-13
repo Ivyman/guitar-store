@@ -7,7 +7,7 @@ import './styles.sass';
 const ThumbnailBox = ({ thumb, name, category, productId, small, amount }) => (
     <div className={`thumbnail-box ${small ? 'thumbnail-box--small' : ''}`}>
         <div className="thumbnail-box__image">
-            {amount && <span className="thumbnail-box__item-amount">{amount}</span>}
+            {amount !== 0 && <span className="thumbnail-box__item-amount">{amount}</span>}
             <img src={thumb} alt={name} />
         </div>
         <div className="thumbnail-box__content">

@@ -6,19 +6,55 @@ import './styles.sass';
 
 const CheckoutForm = ({ onSettingsChange, hasError }) => {
     const [checkoutForm, setCheckoutForm] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        payment: '',
-        delivery: '',
-        country: '',
-        postcode: '',
-        city: '',
-        address: ''
+        name: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        email: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        phone: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        payment: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        delivery: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        country: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        postcode: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        city: {
+            value: '',
+            error: null,
+            dirty: ''
+        },
+        address: {
+            value: '',
+            error: null,
+            dirty: ''
+        }
     });
 
     const handleInputChange = (event, field) => {
-        setCheckoutForm({ ...checkoutForm, [field]: event.target.value });
+        setCheckoutForm({ ...checkoutForm, [field]: { value: event.target.value } });
     };
 
     useEffect(() => onSettingsChange(checkoutForm), [checkoutForm]);
@@ -35,7 +71,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     name="name"
                     type="text"
                     placeholder="Name"
-                    value={checkoutForm.name}
+                    value={checkoutForm.name.value}
                     onChange={event => handleInputChange(event, 'name')}
                 />
                 <input
@@ -43,7 +79,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     name="email"
                     type="email"
                     placeholder="Email"
-                    value={checkoutForm.email}
+                    value={checkoutForm.email.value}
                     onChange={event => handleInputChange(event, 'email')}
                 />
                 <input
@@ -51,7 +87,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     name="phone"
                     type="tel"
                     placeholder="Phone"
-                    value={checkoutForm.phone}
+                    value={checkoutForm.phone.value}
                     onChange={event => handleInputChange(event, 'phone')}
                 />
             </fieldset>
@@ -81,7 +117,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                 <legend className="checkout-form__legend">Delivery option</legend>
                 <Select
                     name="delivery"
-                    value={checkoutForm.delivery}
+                    value={checkoutForm.delivery.value}
                     onChange={event => handleInputChange(event, 'delivery')}
                 >
                     <option value="" disabled>
@@ -102,7 +138,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     className="input"
                     name="country"
                     placeholder="Country"
-                    value={checkoutForm.country}
+                    value={checkoutForm.country.value}
                     onChange={event => handleInputChange(event, 'country')}
                 />
                 <input
@@ -110,7 +146,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     className="input"
                     name="postcode"
                     placeholder="Postcode"
-                    value={checkoutForm.postcode}
+                    value={checkoutForm.postcode.value}
                     onChange={event => handleInputChange(event, 'postcode')}
                 />
                 <input
@@ -118,7 +154,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     className="input"
                     name="city"
                     placeholder="City"
-                    value={checkoutForm.city}
+                    value={checkoutForm.city.value}
                     onChange={event => handleInputChange(event, 'city')}
                 />
                 <input
@@ -126,7 +162,7 @@ const CheckoutForm = ({ onSettingsChange, hasError }) => {
                     name="address"
                     type="text"
                     placeholder="Address"
-                    value={checkoutForm.address}
+                    value={checkoutForm.address.value}
                     onChange={event => handleInputChange(event, 'address')}
                 />
             </fieldset>
