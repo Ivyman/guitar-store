@@ -7,4 +7,4 @@
 3. Run mock server `$ yarn server`
 4. In another terminal tab run app `$ yarn start`
 
-#### [Try it now](https://ivyman.github.io/guitar-store/)
+#### [Try it now](https://apluszcz.github.io/guitar-store/)
