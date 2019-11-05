@@ -28,7 +28,7 @@
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
-        "server": "json-server --watch db-mock.json --port 4433",
+        "server": "json-server --watch src/db-mock.json --port 4433",
         "predeploy": "yarn run build",
         "deploy": "gh-pages -d build"
     },

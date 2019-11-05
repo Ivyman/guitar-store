@@ -1,11 +1,14 @@
 import axios from 'axios';
 import * as types from './types';
-import { settingsEndpoint } from '../../utils/config';
+import { settingsEndpoint, isProduction } from '../../utils/config';
+import mockServerData from '../../db-mock.json';
 
 export const fetchSettings = () => async dispatch => {
     dispatch(startFetchingSettings());
     try {
-        const responce = await axios.get(settingsEndpoint);
+        const responce = isProduction
+            ? { data: mockServerData.settings }
+            : await axios.get(settingsEndpoint);
         dispatch(fetchingSettingsSuccess(responce.data));
     } catch (err) {
         dispatch(fetchingSettingsFail(err));

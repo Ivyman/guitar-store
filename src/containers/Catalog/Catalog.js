@@ -95,8 +95,8 @@ class Catalog extends React.Component {
 
         return (
             <>
-                <Breadcrumbs crumbs={[['Product catalog']]} />
-                <h1 className="main-subtitle">Product catalog</h1>
+                <Breadcrumbs crumbs={[['Catalog']]} />
+                <h1 className="main-subtitle">Catalog</h1>
 
                 <FiltersForm
                     filtersState={filtersState}

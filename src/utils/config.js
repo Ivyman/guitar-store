@@ -43,3 +43,5 @@ export const route = {
 };
 
 export const brandName = 'GuitarLand';
+
+export const isProduction = process.env.NODE_ENV === 'production';
