@@ -1,0 +1,2 @@
+(this.webpackJsonpproject=this.webpackJsonpproject||[]).push([[9],{119:function(n,t,e){},126:function(n,t,e){"use strict";e.r(t);var o=e(0),c=e.n(o),a=(e(119),function(){return c.a.createElement("p",{className:"not-found"},"Pange not found!")});t.default=a}}]);
+//# sourceMappingURL=9.99e41d4f.chunk.js.map

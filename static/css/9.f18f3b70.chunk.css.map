@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.sass"],"names":[],"mappings":"AACA,WACI,iBAAkB,CAClB,cAAe,CACf,aAAc","file":"9.f18f3b70.chunk.css","sourcesContent":["@import \"src/styles/_variables.sass\";\n.not-found {\n    text-align: center;\n    font-size: 30px;\n    margin: 30px 0; }\n"]}
